@@ -1,157 +1,116 @@
 import UIKit
 
-struct Pentagono {
+struct PolygonArea {
     
-    let apotema: Double
-    let perimetro: Double
+    let perimeter: Double
+    let apothem: Double
     
-    
-    func areaPentagono (perimetro: Double, apotema: Double) -> Double {
-        let areaPerimetro: Double = (perimetro * apotema) / 2
-        return areaPerimetro
+    func area(perimeter: Double, apothem: Double) -> Double {
+        let areaPolygons: Double = (perimeter * apothem) / 2
+        return areaPolygons
     }
 }
 
-struct Hexagono {
+enum Figures {
+
+    case pentagon(PolygonArea)
+    case hexagon(PolygonArea)
+    case heptagon(PolygonArea)
+    case octagon(PolygonArea)
+    case nonagon(PolygonArea)
+    case decagon(PolygonArea)
+}
+
+let penta: PolygonArea = PolygonArea(perimeter: 3, apothem: 7)
+let hexa: PolygonArea = PolygonArea(perimeter: 9, apothem: 5)
+let hepta: PolygonArea = PolygonArea(perimeter: 21, apothem: 13)
+let octa: PolygonArea = PolygonArea(perimeter: 13, apothem: 21)
+let nona: PolygonArea = PolygonArea(perimeter: 23, apothem: 21)
+let deca: PolygonArea = PolygonArea(perimeter: 3, apothem: 6)
+let pentaFigure: Figures = Figures.pentagon(penta)
+let hexaFigure: Figures = Figures.hexagon(hexa)
+let nonaFigure: Figures = Figures.nonagon(nona)
+
+switch nonaFigure {
+case .pentagon(let penta):
+    let areaPentagon: Double = penta.area(perimeter: penta.perimeter, apothem: penta.apothem)
+    debugPrint("Area of Pentagon is: \(areaPentagon)")
+case .hexagon(let hexa):
+    let areaHexagon: Double = hexa.area(perimeter: hexa.perimeter, apothem: hexa.apothem)
+    debugPrint("Area of Hexagon: \(areaHexagon)")
+case .heptagon(let hepta):
+    let areaheptagon: Double = hepta.area(perimeter: hepta.perimeter, apothem: hepta.apothem)
+    debugPrint("Area of Heptagon: \(areaheptagon)")
+case .octagon(let octa):
+    let areaOctagon: Double = octa.area(perimeter: octa.perimeter, apothem: octa.apothem)
+    debugPrint("Area of Octagon is: \(areaOctagon) ")
+case .nonagon(let nonagon):
+    let areaNonagon: Double = nonagon.area(perimeter: nonagon.perimeter, apothem: nonagon.apothem)
+    debugPrint("Area of Nonagon is: \(areaNonagon)")
+case .decagon(let deca):
+    let areaDecagon: Double = deca.area(perimeter: deca.perimeter, apothem: deca.apothem)
+    debugPrint("Area of Decagon is: \(areaDecagon)")
+
+
+}
+
+/*struct PolygonPerimeter {
     
-    let perimetro: Double
-    let apotema: Double
+    let sideLength: Double
+    let perimeter: Double
     
-    func areaHexagono (perimetro: Double, apotema: Double) -> Double {
-        let area: Double = (perimetro * apotema) / 2
-        return area
+    
+    func perimeterOfPolygons (perimeter: Double, sideLenght: Double) -> Double {
+        let figurePerimeter: Double = (perimeter * sideLenght)
+        return figurePerimeter
     }
 }
 
-struct Heptagono {
-    
-    let perimetro: Double
-    let apotema: Double
-    
-    
-    func areaHeptagono (perimetro: Double, apotema: Double) -> Double {
-        let areaCalculo: Double = (perimetro * apotema) / 2
-        return areaCalculo
-    }
+enum Figure {
+
+    case pentagon(PolygonPerimeter)
+    case hexagon(PolygonPerimeter)
+    case heptagon(PolygonPerimeter)
+    case octagon(PolygonPerimeter)
+    case nonagon(PolygonPerimeter)
+    case dacagon(PolygonPerimeter)
 }
 
-struct Decagono {
-    
-    let perimetro: Double
-    let apotema: Double
-    
-    func areaDecagono (perimetro: Double, apotema: Double) -> Double {
-        let areaDecagono: Double = (perimetro * apotema) / 2
-        return areaDecagono
-    }
-}
+let pentagon: PolygonPerimeter = PolygonPerimeter(sideLength: 5, perimeter: 8)
+let hexagon: PolygonPerimeter = PolygonPerimeter(sideLength: 6, perimeter: 7)
+let heptagon: PolygonPerimeter = PolygonPerimeter(sideLength: 7, perimeter: 8)
+let octagon: PolygonPerimeter = PolygonPerimeter(sideLength: 8, perimeter: 4)
+let nonagon: PolygonPerimeter = PolygonPerimeter(sideLength: 9, perimeter: 8)
+let decagon: PolygonPerimeter = PolygonPerimeter(sideLength: 10, perimeter: 5)
+let pentaFigures: Figure = Figure.pentagon(pentagon)
+let decaFigure: Figure = Figure.dacagon(decagon)
 
-enum Figuras {
-    case pentagono(Pentagono)
-    case hexagono(Hexagono)
-    case heptagono(Heptagono)
-    case decagono(Decagono)
-}
-
-let penta: Pentagono = Pentagono(apotema: 3, perimetro: 9)
-let hexa: Hexagono = Hexagono(perimetro: 4, apotema: 7)
-let hepta: Heptagono = Heptagono(perimetro: 5, apotema: 3)
-let deca: Decagono = Decagono(perimetro: 11, apotema: 12)
-let figura1: Figuras = Figuras.pentagono(penta)
-let figura2: Figuras = Figuras.heptagono(hepta)
-
-switch figura2 {
-case .pentagono(let penta):
-    let area: Double = penta.areaPentagono(perimetro: penta.perimetro, apotema: penta.apotema)
-    debugPrint("El area del Pentagono es de: \(area)")
-case .hexagono(let hexa):
-    let area: Double = hexa.areaHexagono(perimetro: hexa.perimetro, apotema: hexa.apotema)
-    debugPrint("El area del Hexagono es de: \(area)")
-case .heptagono(let hepta):
-    let area: Double = hepta.areaHeptagono(perimetro: hepta.perimetro, apotema: hepta.apotema)
-    debugPrint("El area del Heptagono es de: \(area)")
-case .decagono(let deca):
-    let area: Double = deca.areaDecagono(perimetro: deca.perimetro, apotema: deca.apotema)
-    debugPrint("El area del Decagono es de: \(area)")
-}
+switch decaFigure {
+case .pentagon(let penta):
+    let perimeterPenta: Double = penta.perimeterOfPolygons(perimeter: pentagon.perimeter, sideLenght: pentagon.sideLength)
+    debugPrint("Perimeter of Pentagon is: \(perimeterPenta)")
+case .hexagon(let hexa):
+    let perimeterHexa: Double = hexa.perimeterOfPolygons(perimeter: hexa.perimeter, sideLenght: hexa.sideLength)
+    debugPrint("Perimeter of Hexagon is: \(perimeterHexa)")
+case .heptagon(let hepta):
+    let perimeterHepta: Double = hepta.perimeterOfPolygons(perimeter: hepta.perimeter, sideLenght: hepta.sideLength)
+    debugPrint("Perimeter of Heptagon is: \(perimeterHepta)")
+case .octagon(let octa):
+    let perimeterOcta: Double = octa.perimeterOfPolygons(perimeter: octa.perimeter, sideLenght: octa.sideLength)
+    debugPrint("Perimeter of Octagon is: \(perimeterOcta)")
+case .nonagon(let nona):
+    let perimeterNona: Double = nona.perimeterOfPolygons(perimeter: nona.perimeter, sideLenght: nona.sideLength)
+    debugPrint("Perimeter of Nonagon is: \(perimeterNona)")
+case .dacagon(let deca):
+    let perimeterDeca: Double = deca.perimeterOfPolygons(perimeter: deca.perimeter, sideLenght: deca.sideLength)
+    debugPrint("Perimeter of Decagon is: \(perimeterDeca)")
+} */
 
 
 
 
 
 
-//struct Circulo {
-//
-//    let pi: Float
-//    let radio: Float
-//
-//    func obtnerArea(pi: Float, radio: Float) -> Float {
-//        let area: Float = pi * (pow(radio, 2))
-//        return area
-//    }
-//}
-//
-//struct Cuadrado {
-//
-//    let lado: Float
-//
-//    func obtenerArea(lado: Float) -> Float {
-//        let area: Float = pow(lado, 2)
-//        return area
-//    }
-//}
-//
-//struct Triangulo {
-//
-//    let base: Float
-//    let altura: Float
-//
-//    func obtnerArea(base: Float, altura: Float) -> Float {
-//        let area: Float = (base * altura) / 2
-//        return area
-//    }
-//}
-//
-//enum Figura {
-//    case circulo(Circulo)
-//    case cuadrado(Cuadrado)
-//    case triangulo(Triangulo)
-//}
-//
-//
-//
-//let circulo: Circulo = Circulo(pi: 3.14, radio: 2)
-//let cuadrado: Cuadrado = Cuadrado(lado: 4)
-//let triangulo: Triangulo = Triangulo(base: 2, altura: 6)
-//let figura: Figura = Figura.cuadrado(cuadrado)
-//let figuraDos: Figura = Figura.cuadrado(Cuadrado(lado: 3))
-//let figuraTres: Figura = Figura.triangulo(triangulo)
-//
-//
-//switch figura {
-//case .circulo(let circulo):
-//    let area: Float = circulo.obtnerArea(pi: circulo.pi, radio: circulo.radio)
-//    debugPrint(area)
-//case .cuadrado(let cuadrado):
-//    let area: Float = cuadrado.obtenerArea(lado: cuadrado.lado)
-//    debugPrint(area)
-//case .triangulo(let triangulo):
-//    let area: Float = triangulo.obtnerArea(base: triangulo.base, altura: triangulo.altura)
-//    debugPrint(area)
-//
-//
-//}
 
-//class Clase1 {
-//    var numero: Int = 2
-//}
 
-//struct Struct1 {
-//    var numero: Int = 2
-//}
-//
-//var objeto1 = Struct1()
-//var objeto2: String = objeto1
-//objeto1.numero = 41
-//
-//print("\(objeto1.numero) \(objeto2.numero)")
+
