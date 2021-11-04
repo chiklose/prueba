@@ -17,13 +17,13 @@ func isOdd () {
 
 isOdd()
 
-//var number: Int? = 10
-//
-//print(number!)
-//
-//if let numero = number{
-//    print(numero)
-//}
+var number: Int? = 10
+
+print(number!)
+
+if let numero = number{
+    print(numero)
+}
 
 func printNumber(number: Int?) {
     guard number != nil else {
